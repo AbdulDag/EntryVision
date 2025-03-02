@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>EntryVision - About Us</title>
+  <link rel="icon" href="data:,">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome (if needed for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2DkCEV6n7rx/2y2u9sWnYvJB0PZ+7l5R7NU0BuS/b6bB2TJQp+QCHUK5g7B+pTxDA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --primary: #4B0082;
+      --background-dark: #000000;
+      --overlay-color: rgba(0, 0, 0, 0.45);
+      --nav-bg: rgba(0, 0, 0, 0.75);
+      --transition: 0.3s ease;
+    }
+    /* BASIC RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: 
+        linear-gradient(135deg, var(--background-dark), var(--primary)),
+        url('photo-1515879218367-8466d910aaa4.jpg') no-repeat center center / cover;
+      background-blend-mode: overlay;
+      overflow-x: hidden;
+    }
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--nav-bg);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: padding var(--transition), background var(--transition);
+    }
+    nav.shrink {
+      padding: 0.5rem 2rem;
+      background: rgba(0,0,0,0.85);
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background var(--transition);
+    }
+    .nav-links li a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    /* HERO SECTION */
+    header.hero {
+      position: relative;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--background-dark), var(--primary));
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* TEAM SECTION */
+    .team-section {
+      padding: 120px 2rem 60px;
+      background: rgba(0,0,0,0.9);
+      text-align: center;
+      min-height: 100vh;
+    }
+    .team-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .team-section p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    /* FLIP CARD STYLES */
+    .flip-card {
+      background-color: transparent;
+      width: 220px;
+      height: 300px;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+    }
+    .flip-card-front {
+      background: #222;
+      padding: 1rem;
+    }
+    .flip-card-front img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      border: 3px solid #444;
+      margin-bottom: 1rem;
+    }
+    .flip-card-front h3 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .flip-card-back {
+      background: #222;
+      color: #fff;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .flip-card-back h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .flip-card-back p {
+      font-size: 1rem;
+      color: #aaa;
+    }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #999;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="logo">EntryVision</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="what-is-entryvision.html">What is EntryVision?</a></li>
+      <li><a href="facetracking.html">Face Recognition</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>About Us</h1>
+      <p>Meet the dedicated team behind EntryVision and learn about our passion for security innovation.</p>
+    </div>
+  </header>
+
+  <!-- TEAM SECTION -->
+  <section class="team-section" id="team">
+    <h2>Our Team</h2>
+    <p>
+      We are a passionate high school group committed to redefining security. Our diverse expertise—from backend and frontend development to hardware integration—drives the creation of cutting-edge solutions.
+    </p>
+    <div class="team-container">
+      <!-- Team Member 1: Abdul Daghistani (Backend) -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/abdul.jpg" alt="Abdul Daghistani">
+            <h3>Abdul Daghistani</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Abdul Daghistani</h3>
+            <p>Backend 
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 2: Ahmad Sultan (Frontend, square glasses) -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/ahmad.jpg" alt="Ahmad Sultan">
+            <h3>Ahmad Sultan</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Ahmad Sultan</h3>
+            <p>Frontend
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 3: Asad Farishta (Hardware, beard) -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/asad.jpg" alt="Asad Farishta">
+            <h3>Asad Farishta</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Asad Farishta</h3>
+            <p>Hardware
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 4: Ajay Kular (Hardware, circle glasses) -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/ajay.jpg" alt="Ajay Kular">
+            <h3>Ajay Kular</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Ajay Kular</h3>
+            <p>Hardware</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; <span id="year"></span> EntryVision. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) { nav.classList.add('shrink'); }
+      else { nav.classList.remove('shrink'); }
+    });
+  </script>
+</body>
+</html>
+

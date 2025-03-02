@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition - EntryVision</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000, #4B0082);
+            color: white;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .header {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .sub-header {
+            font-size: 1.1rem;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        .mode-switch {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .mode-switch button {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .mode-switch button.active {
+            background: #6a0572;
+        }
+        .camera-frame {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            position: relative;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .scan-button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #6a0572;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .scan-button:hover {
+            background: #8a0d91;
+        }
+        .manage-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .manage-text {
+            max-width: 400px;
+        }
+        .manage-text h2 {
+            color: #fff;
+        }
+        .manage-text p {
+            color: #bbb;
+            font-size: 1rem;
+        }
+        .manage-button {
+            background: #6a0572;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .manage-button:hover {
+            background: #8a0d91;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Smart Door Control</h1>
+        <p class="sub-header">Secure access with facial recognition</p>
+        
+        <!-- Mode Switch -->
+        <div class="mode-switch">
+            <button class="active">Facial Recognition</button>
+        </div>
+        
+        <!-- Camera Frame -->
+        <div class="camera-frame">
+            <video id="video" autoplay playsinline></video>
+        </div>
+        
+        <button class="scan-button" id="scanButton">Scan Face to Unlock</button>
+
+        <!-- Manage Recognized Faces -->
+        <div class="manage-section">
+            <div class="manage-text">
+                <h2>Manage Recognized Faces</h2>
+                <p>Add individuals, set access permissions, and monitor entry logs all in one place.</p>
+            </div>
+            <button class="manage-button">Learn More</button>
+        </div>
+    </div>
+
+    <script>
+        async function startCamera() {
+            const video = document.getElementById("video");
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing camera:", err);
+                alert("Could not access camera. Please check permissions.");
+            }
+        }
+        
+        document.getElementById("scanButton").addEventListener("click", () => {
+            alert("Scanning face... (Simulated)");
+        });
+        
+        window.addEventListener("load", startCamera);
+    </script>
+</body>
+<nav id="navbar">
+    <div class="logo">EntryVision</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="what-is-entryvision.html">What is EntryVision?</a></li>
+      <li><a href="facetracking.html">Face Recognition</a></li>
+
+    </ul>
+  </nav>
+</html>
