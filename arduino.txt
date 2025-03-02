@@ -1,0 +1,21 @@
+int unlockPin = 7;  // Pin connected to the relay or magnetic door lock
+
+void setup() {
+  Serial.begin(9600);  // Start serial communication
+  pinMode(unlockPin, OUTPUT);  // Set the unlockPin as an output
+}
+
+void loop() {
+  if (Serial.available() > 0) {  // Check if data is available to read from Python
+    String command = Serial.readString();  // Read the incoming data as a string
+    Serial.print("Received: ");  // Debugging output
+    Serial.println(command);  // Print the received data to Serial Monitor
+
+    if (command == "UNLOCK") {  // Check if the command is "UNLOCK"
+      digitalWrite(unlockPin, HIGH);  // Unlock the door (turn on relay/magnetic lock)
+      delay(5000);  // Keep the door unlocked for 5 seconds
+      digitalWrite(unlockPin, LOW);  // Lock the door again (turn off relay/magnetic lock)
+      Serial.println("Door Unlocked");
+    }
+  }
+}
