@@ -2,7 +2,7 @@ import serial
 import time
 
 # Open the serial connection (make sure to replace 'COM_PORT' with your actual port)
-ser = serial.Serial('COM3', 9600, timeout=1)
+ser = serial.Serial('COM8', 9600, timeout=1)
 
 # Allow Arduino to reset
 time.sleep(2)
@@ -16,3 +16,6 @@ print("Unlock command sent!")
 
 # Close the serial connection
 ser.close()
+
+
+#learning how to communicate with arduino through python and serial library. 

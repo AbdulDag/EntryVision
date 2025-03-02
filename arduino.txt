@@ -1,3 +1,4 @@
+#send this to the IDE and upload to arduino 
 int unlockPin = 7;  // Pin connected to the relay or magnetic door lock
 
 void setup() {
