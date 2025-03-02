@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Detector</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Face Detection using OpenCV</h1>
+    <img id="bg" src="{{ url_for('video_feed') }}">
+    <div class="content">
+        <p>Position face in the frame</p>
+    </div>
+    <div class="footer">
+        <p>Scan face to unlock</p>
+    </div>
+</body>
+</html>
